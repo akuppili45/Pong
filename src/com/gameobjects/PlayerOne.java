@@ -5,7 +5,6 @@ import com.company.ObjectId;
 
 import java.awt.*;
 import java.util.LinkedList;
-import com.company.GameObject;
 import com.company.Handler;
 
 /**

@@ -26,6 +26,7 @@ public class PlayerTwo extends GameObject {
         g.setColor(Color.RED);
         g.fillRect((int)getX(),(int)getY(), 25,80);
         Graphics2D g2D = (Graphics2D)g;
+        g2D.setColor(Color.BLUE);
 //        g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
 //        g2D.draw(getBoundsTop());
@@ -33,7 +34,7 @@ public class PlayerTwo extends GameObject {
     }
     @Override
     public Rectangle getBoundsLeft() {
-        return null;
+        return new Rectangle((int)getX(), (int)getY(), 2, 80);
     }
 
     @Override

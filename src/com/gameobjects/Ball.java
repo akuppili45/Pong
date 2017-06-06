@@ -51,7 +51,7 @@ public class Ball extends GameObject {
 
     @Override
     public Rectangle getBoundsRight() {
-        return null;
+        return new Rectangle((int)getX() +25, (int)getY() + 9, 5,15);
     }
 
     @Override
@@ -66,6 +66,11 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerOne){
                 if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
                    velocity = 5;
+                }
+            }
+            if(tempObject.getId() == ObjectId.PlayerTwo){
+                if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
+                    velocity = -5;
                 }
             }
 
