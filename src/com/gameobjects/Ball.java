@@ -73,6 +73,16 @@ public class Ball extends GameObject {
                     velocity = -5;
                 }
             }
+            if(tempObject.getId() == ObjectId.PlayerOnePlatform){
+                if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
+                    velocity = 0;
+                }
+            }
+            if(tempObject.getId() == ObjectId.PlayerTwoPlatform){
+                if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
+                    velocity = 0;
+                }
+            }
 
         }
     }

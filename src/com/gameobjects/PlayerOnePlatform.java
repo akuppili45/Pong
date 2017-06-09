@@ -26,6 +26,7 @@ public class PlayerOnePlatform extends GameObject
         g.setColor(Color.WHITE);
         g.fillRect((int)getX(), (int)getY(), 32,32);
         Graphics2D g2D = (Graphics2D)g;
+        g2D.setColor(Color.MAGENTA);
 //        g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
 //        g2D.draw(getBoundsTop());
@@ -44,7 +45,7 @@ public class PlayerOnePlatform extends GameObject
 
     @Override
     public Rectangle getBoundsRight() {
-        return null;
+        return new Rectangle((int)getX()+30, (int)getY(), 2,80);
     }
 
     @Override
