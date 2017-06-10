@@ -64,9 +64,17 @@ public class Ball extends GameObject {
         for(int i = 0; i < a.size(); i++){
             GameObject tempObject = a.get(i);
             if(tempObject.getId() == ObjectId.PlayerOne){
-                if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
+                PlayerOne p1 = (PlayerOne)tempObject;
+                if(getBoundsRight().intersects(p1.getRightAngleBounds()[0])){
+                    velocity = 5;
+                    setVelY(1);
+                }
+                else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[1])){
                    velocity = 5;
-
+                }
+                else if(getBoundsRight().intersects(p1.getRightAngleBounds()[2])){
+                    velocity = 5;
+                    setVelY(-1);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){

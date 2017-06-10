@@ -60,4 +60,9 @@ public class PlayerOne extends GameObject {
     public void collision(LinkedList<GameObject> a) {
 
     }
+    public Rectangle[] getRightAngleBounds(){
+        int dx = 53;
+        Rectangle[] a = {new Rectangle((int)getX() + dx, (int)getY(), 2, h),new Rectangle((int)getX() + dx, (int)getY() + h, 2, h),new Rectangle((int)getX() + dx, (int)getY() + 2*h, 2, h)};
+        return a;
+    }
 }
