@@ -66,12 +66,23 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerOne){
                 if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
                    velocity = 5;
+
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){
-                if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
+                PlayerTwo p2 = (PlayerTwo)tempObject;
+                if(getBoundsRight().intersects(p2.getLeftAngleBounds()[0])){
+                    velocity = -5;
+                    setVelY(-1);
+                }
+                else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[1])){
                     velocity = -5;
                 }
+                else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[2])){
+                    velocity = -5;
+                    setVelY(1);
+                }
+
             }
             if(tempObject.getId() == ObjectId.PlayerOnePlatform){
                 if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
@@ -81,6 +92,7 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerTwoPlatform){
                 if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
                     velocity = 0;
+                    setVelY(0);
                 }
             }
 

@@ -12,7 +12,7 @@ import com.company.Handler;
  */
 public class PlayerOne extends GameObject {
 
-
+    int h = 27;
     public PlayerOne(double x, double y, ObjectId id, Handler handler) {
         super(x, y, id, handler);
     }
@@ -29,6 +29,9 @@ public class PlayerOne extends GameObject {
         Graphics2D g2D = (Graphics2D)g;
         //g2D.draw(getBoundsLeft());
         g2D.setColor(Color.MAGENTA);
+        g2D.draw(new Rectangle((int)getX() + 25, (int)getY(), 2, h));
+        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + h, 2, h));
+        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + 2*h, 2, h));
         //g2D.draw(getBoundsRight());
         //g2D.draw(getBoundsTop());
         //g2D.draw(getBoundsBottom());
