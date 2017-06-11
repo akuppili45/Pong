@@ -43,7 +43,7 @@ public class PlayerOne extends GameObject {
     }
 
     @Override
-    public Rectangle getBoundsTop() {
+    public Rectangle getBoundsTop() { 
         return new Rectangle((int)getX(),(int)getY(),25,2);
     }
 
