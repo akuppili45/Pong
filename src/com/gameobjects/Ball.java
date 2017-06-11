@@ -35,7 +35,7 @@ public class Ball extends GameObject {
         g2D.setColor(Color.MAGENTA);
         //g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
-        g2D.draw(getBoundsTop());
+//        g2D.draw(getBoundsTop());
 //        g2D.draw(getBoundsBottom());
 
     }
@@ -56,7 +56,7 @@ public class Ball extends GameObject {
 
     @Override
     public Rectangle getBoundsBottom() {
-        return null;
+        return new Rectangle((int)getX() + 10,(int)getY() + 27, 8,3);
     }
 
     @Override
@@ -104,9 +104,8 @@ public class Ball extends GameObject {
                     setVelY(0);
                 }
             }
-            if(tempObject.getId() == ObjectId.TopPlatform){
-                if(getBoundsTop().intersects(tempObject.getBoundsBottom())){
-                    //velocity = -velocity;
+            if(tempObject.getId() == ObjectId.Platform){
+                if(getBoundsTop().intersects(tempObject.getBoundsBottom()) || getBoundsBottom().intersects(tempObject.getBoundsTop())){
                     setVelY(-getVelY());
                 }
             }

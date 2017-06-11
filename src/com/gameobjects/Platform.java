@@ -12,8 +12,8 @@ import java.util.LinkedList;
 /**
  * Created by akupp_000 on 6/10/2017.
  */
-public class TopPlatform extends GameObject {
-    public TopPlatform(double x, double y, ObjectId id, Handler handler) {
+public class Platform extends GameObject {
+    public Platform(double x, double y, ObjectId id, Handler handler) {
         super(x, y, id, handler);
     }
 
@@ -28,7 +28,8 @@ public class TopPlatform extends GameObject {
         g.fillRect((int)getX(), (int)getY(), 750, 30);
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(Color.MAGENTA);
-        g2D.draw(getBoundsBottom());
+//        g2D.draw(getBoundsBottom());
+//        g2D.draw(getBoundsTop());
     }
 
     @Override
@@ -38,7 +39,7 @@ public class TopPlatform extends GameObject {
 
     @Override
     public Rectangle getBoundsTop() {
-        return null;
+        return new Rectangle((int)getX(),(int)getY(), 750, 2);
     }
 
     @Override
