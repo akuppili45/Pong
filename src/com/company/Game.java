@@ -108,8 +108,8 @@ public class Game extends Canvas implements Runnable{
                 if (red == 255 && green == 97 && blue == 12) {
                     handler.addObject(new Ball(xx *32, yy*32, ObjectId.Ball,handler));
                 }
-                if (red == 0 && green == 255 && blue == 33){
-
+                if (red == 182 && green == 255 && blue == 0){
+                    handler.addObject(new TopPlatform(xx *32, yy*32, ObjectId.TopPlatform,handler));
                 }
 
             }

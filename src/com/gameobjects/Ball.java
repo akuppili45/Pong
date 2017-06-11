@@ -35,7 +35,7 @@ public class Ball extends GameObject {
         g2D.setColor(Color.MAGENTA);
         //g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
-//        g2D.draw(getBoundsTop());
+        g2D.draw(getBoundsTop());
 //        g2D.draw(getBoundsBottom());
 
     }
@@ -46,7 +46,7 @@ public class Ball extends GameObject {
 
     @Override
     public Rectangle getBoundsTop() {
-        return null;
+        return new Rectangle((int)getX() + 12,(int)getY(), 8,3);
     }
 
     @Override
@@ -67,14 +67,14 @@ public class Ball extends GameObject {
                 PlayerOne p1 = (PlayerOne)tempObject;
                 if(getBoundsRight().intersects(p1.getRightAngleBounds()[0])){
                     velocity = 5;
-                    setVelY(1);
+                    setVelY(-1);
                 }
-                else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[1])){
+                else if(getBoundsRight().intersects(p1.getRightAngleBounds()[1])){
                    velocity = 5;
                 }
                 else if(getBoundsRight().intersects(p1.getRightAngleBounds()[2])){
                     velocity = 5;
-                    setVelY(-1);
+                    setVelY(1);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){
@@ -95,12 +95,19 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerOnePlatform){
                 if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
                     velocity = 0;
+                    setVelY(0);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwoPlatform){
                 if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
                     velocity = 0;
                     setVelY(0);
+                }
+            }
+            if(tempObject.getId() == ObjectId.TopPlatform){
+                if(getBoundsTop().intersects(tempObject.getBoundsBottom())){
+                    //velocity = -velocity;
+                    setVelY(-getVelY());
                 }
             }
 

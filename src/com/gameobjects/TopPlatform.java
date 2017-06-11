@@ -3,8 +3,10 @@ package com.gameobjects;
 import com.company.GameObject;
 import com.company.Handler;
 import com.company.ObjectId;
+import com.sun.prism.*;
 
 import java.awt.*;
+import java.awt.Graphics;
 import java.util.LinkedList;
 
 /**
@@ -22,7 +24,11 @@ public class TopPlatform extends GameObject {
 
     @Override
     public void render(Graphics g) {
-
+        g.setColor(Color.YELLOW);
+        g.fillRect((int)getX(), (int)getY(), 750, 30);
+        Graphics2D g2D = (Graphics2D)g;
+        g2D.setColor(Color.MAGENTA);
+        g2D.draw(getBoundsBottom());
     }
 
     @Override
@@ -42,7 +48,7 @@ public class TopPlatform extends GameObject {
 
     @Override
     public Rectangle getBoundsBottom() {
-        return null;
+        return new Rectangle((int)getX(), (int)getY() + 29, 750, 2);
     }
 
     @Override
