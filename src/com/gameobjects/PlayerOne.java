@@ -20,6 +20,7 @@ public class PlayerOne extends GameObject {
     @Override
     public void tick(LinkedList<GameObject> object) {
         setY(getY() + getVelY());
+        collision(getHandler().getObjects());
     }
 
     @Override
@@ -29,12 +30,12 @@ public class PlayerOne extends GameObject {
         Graphics2D g2D = (Graphics2D)g;
         //g2D.draw(getBoundsLeft());
         g2D.setColor(Color.MAGENTA);
-        g2D.draw(new Rectangle((int)getX() + 25, (int)getY(), 2, h));
-        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + h, 2, h));
-        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + 2*h, 2, h));
+//        g2D.draw(new Rectangle((int)getX() + 25, (int)getY(), 2, h));
+//        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + h, 2, h));
+//        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + 2*h, 2, h));
         //g2D.draw(getBoundsRight());
-        //g2D.draw(getBoundsTop());
-        //g2D.draw(getBoundsBottom());
+//        g2D.draw(getBoundsTop());
+//        g2D.draw(getBoundsBottom());
     }
     @Override
     public Rectangle getBoundsLeft() {
@@ -43,7 +44,7 @@ public class PlayerOne extends GameObject {
 
     @Override
     public Rectangle getBoundsTop() {
-        return null;
+        return new Rectangle((int)getX(),(int)getY(),25,2);
     }
 
     @Override
@@ -53,12 +54,23 @@ public class PlayerOne extends GameObject {
 
     @Override
     public Rectangle getBoundsBottom() {
-        return null;
+        return new Rectangle((int)getX(),(int)getY() + 78,25,2);
     }
 
     @Override
     public void collision(LinkedList<GameObject> a) {
+        for(int i = 0; i < a.size(); i++){
+            GameObject tempObject = a.get(i);
+            if(tempObject.getId() == ObjectId.Platform){
+                if(getBoundsBottom().intersects(tempObject.getBoundsTop())){
+                    setY(getY()-5);
+                }
+                if(getBoundsTop().intersects(tempObject.getBoundsBottom())){
+                    setY(getY()+5);
+                }
 
+            }
+        }
     }
     public Rectangle[] getRightAngleBounds(){
         int dx = 53;

@@ -20,6 +20,7 @@ public class PlayerTwo extends GameObject {
     @Override
     public void tick(LinkedList<GameObject> object) {
         setY(getY() + getVelY());
+        collision(getHandler().getObjects());
     }
 
     @Override
@@ -28,9 +29,9 @@ public class PlayerTwo extends GameObject {
         g.fillRect((int)getX(),(int)getY(), 25,80);
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(Color.BLUE);
-        g2D.draw(new Rectangle((int)getX(), (int)getY(), 2, h));
-        g2D.draw(new Rectangle((int)getX(), (int)getY() + h, 2, h));
-        g2D.draw(new Rectangle((int)getX(), (int)getY() + 2*h, 2, h));
+//        g2D.draw(new Rectangle((int)getX(), (int)getY(), 2, h));
+//        g2D.draw(new Rectangle((int)getX(), (int)getY() + h, 2, h));
+//        g2D.draw(new Rectangle((int)getX(), (int)getY() + 2*h, 2, h));
 //        g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
 //        g2D.draw(getBoundsTop());
@@ -43,7 +44,7 @@ public class PlayerTwo extends GameObject {
 
     @Override
     public Rectangle getBoundsTop() {
-        return null;
+        return new Rectangle((int)getX(),(int)getY(),25,2);
     }
 
     @Override
@@ -53,12 +54,23 @@ public class PlayerTwo extends GameObject {
 
     @Override
     public Rectangle getBoundsBottom() {
-        return null;
+        return new Rectangle((int)getX(),(int)getY() + 78,25,2);
     }
 
     @Override
     public void collision(LinkedList<GameObject> a) {
+        for(int i = 0; i < a.size(); i++){
+            GameObject tempObject = a.get(i);
+            if(tempObject.getId() == ObjectId.Platform){
+                if(getBoundsBottom().intersects(tempObject.getBoundsTop())){
+                    setY(getY()-5);
+                }
+                if(getBoundsTop().intersects(tempObject.getBoundsBottom())){
+                    setY(getY()+5);
+                }
 
+            }
+        }
     }
     public Rectangle[] getLeftAngleBounds(){
         Rectangle[] a = {new Rectangle((int)getX(), (int)getY(), 2, h), new Rectangle((int)getX(), (int)getY() + h, 2, h), new Rectangle((int)getX(), (int)getY() + 2*h, 2, h) };
