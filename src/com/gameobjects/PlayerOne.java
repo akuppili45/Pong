@@ -33,7 +33,9 @@ public class PlayerOne extends GameObject {
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY(), 2, h));
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + h, 2, h));
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + 2*h, 2, h));
-        //g2D.draw(getBoundsRight());
+//        g2D.draw(getBoundsRight());
+//        for (int i = 0; i < getRightAngleBounds().length; i ++)
+//            g2D.draw(getRightAngleBounds()[i]);
 //        g2D.draw(getBoundsTop());
 //        g2D.draw(getBoundsBottom());
     }
@@ -73,8 +75,8 @@ public class PlayerOne extends GameObject {
         }
     }
     public Rectangle[] getRightAngleBounds(){
-        int dx = 53;
-        Rectangle[] a = {new Rectangle((int)getX() + dx, (int)getY(), 2, h),new Rectangle((int)getX() + dx, (int)getY() + h, 2, h),new Rectangle((int)getX() + dx, (int)getY() + 2*h, 2, h)};
+        int dx = 26;
+        Rectangle[] a = {new Rectangle((int)getX() + dx, (int)getY(), 3, h),new Rectangle((int)getX() + dx, (int)getY() + h, 3, h),new Rectangle((int)getX() + dx, (int)getY() + 2*h, 3, h)};
         return a;
     }
 }

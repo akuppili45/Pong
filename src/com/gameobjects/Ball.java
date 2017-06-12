@@ -11,7 +11,7 @@ import com.company.Handler;
  * Created by akupp_000 on 6/4/2017.
  */
 public class Ball extends GameObject {
-    int velocity = -10;
+    int velocity = -5;
     public Ball(double x, double y, ObjectId id,Handler handler) {
         super(x, y, id, handler);
     }
@@ -32,7 +32,7 @@ public class Ball extends GameObject {
         g.fillOval((int)getX(),(int)getY(), 30,30);
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(Color.MAGENTA);
-        //g2D.draw(getBoundsLeft());
+//        g2D.draw(getBoundsLeft());
 //        g2D.draw(getBoundsRight());
 //        g2D.draw(getBoundsTop());
 //        g2D.draw(getBoundsBottom());
@@ -64,30 +64,30 @@ public class Ball extends GameObject {
             GameObject tempObject = a.get(i);
             if(tempObject.getId() == ObjectId.PlayerOne){
                 PlayerOne p1 = (PlayerOne)tempObject;
-                if(getBoundsRight().intersects(p1.getRightAngleBounds()[0])){
+                if(getBoundsLeft().intersects(p1.getRightAngleBounds()[0])){
                     velocity = 10;
-                    setVelY(-1);
+                    setVelY(-3);
                 }
-                else if(getBoundsRight().intersects(p1.getRightAngleBounds()[1])){
+                else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[1])){
                    velocity = 10;
                 }
-                else if(getBoundsRight().intersects(p1.getRightAngleBounds()[2])){
-                    velocity = 10;
-                    setVelY(1);
+                else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[2])){
+                    velocity =10;
+                    setVelY(3);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){
                 PlayerTwo p2 = (PlayerTwo)tempObject;
                 if(getBoundsRight().intersects(p2.getLeftAngleBounds()[0])){
                     velocity = -10;
-                    setVelY(-1);
+                    setVelY(-3);
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[1])){
                     velocity = -10;
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[2])){
                     velocity = -10;
-                    setVelY(1);
+                    setVelY(3);
                 }
 
             }
