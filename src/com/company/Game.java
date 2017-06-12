@@ -1,7 +1,6 @@
 package com.company;
 
 import com.gameobjects.*;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -17,14 +16,14 @@ public class Game extends Canvas implements Runnable{
         Thread thread = new Thread(this);
         thread.start();
     }
-    public static void main(String[] args) {
-        new Window(800, 600, "Pong", new Game());
-    }
+
     public void init(){
         BufferedImageLoader loader = new BufferedImageLoader();
         BufferedImage level;
+        BufferedImage menu = loader.loadImage("/pongmainmenu.png");
         handler = new Handler();
         level = loader.loadImage("/ponglevel.png");
+        //Mouse input click on button 'Play', and then load the image level
         loadImageLevel(level);
 
         this.addKeyListener(new KeyInput(handler));
@@ -114,6 +113,11 @@ public class Game extends Canvas implements Runnable{
 
             }
         }
+    }
+
+    public static void main(String[] args) {
+        new Window(800, 600, "Pong", new Game());
+//        new Window(800, 600, "Pong");
     }
 
 }

@@ -22,4 +22,13 @@ public class Window
         frame.setVisible(true);
         game.start();
     }
+    public Window(int w, int h, String title){
+        frame = new JFrame(title);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setSize(w,h);
+    }
 }
