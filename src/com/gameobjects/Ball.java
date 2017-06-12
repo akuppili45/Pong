@@ -11,6 +11,9 @@ import com.company.Handler;
  * Created by akupp_000 on 6/4/2017.
  */
 public class Ball extends GameObject {
+
+    int leftVelocity = -5;
+    int rightVelocity = 5;
     int velocity = -5;
     public Ball(double x, double y, ObjectId id,Handler handler) {
         super(x, y, id, handler);
@@ -65,28 +68,28 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerOne){
                 PlayerOne p1 = (PlayerOne)tempObject;
                 if(getBoundsLeft().intersects(p1.getRightAngleBounds()[0])){
-                    velocity = 10;
+                    velocity = rightVelocity;
                     setVelY(-3);
                 }
                 else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[1])){
-                   velocity = 10;
+                   velocity = rightVelocity;
                 }
                 else if(getBoundsLeft().intersects(p1.getRightAngleBounds()[2])){
-                    velocity =10;
+                    velocity =rightVelocity;
                     setVelY(3);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){
                 PlayerTwo p2 = (PlayerTwo)tempObject;
                 if(getBoundsRight().intersects(p2.getLeftAngleBounds()[0])){
-                    velocity = -10;
+                    velocity = leftVelocity;
                     setVelY(-3);
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[1])){
-                    velocity = -10;
+                    velocity = leftVelocity;
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[2])){
-                    velocity = -10;
+                    velocity = leftVelocity;
                     setVelY(3);
                 }
 
