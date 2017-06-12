@@ -5,14 +5,13 @@ import com.company.ObjectId;
 
 import java.awt.*;
 import java.util.LinkedList;
-import com.company.GameObject;
 import com.company.Handler;
 
 /**
  * Created by akupp_000 on 6/4/2017.
  */
 public class Ball extends GameObject {
-    int velocity = -5;
+    int velocity = -10;
     public Ball(double x, double y, ObjectId id,Handler handler) {
         super(x, y, id, handler);
     }
@@ -66,28 +65,28 @@ public class Ball extends GameObject {
             if(tempObject.getId() == ObjectId.PlayerOne){
                 PlayerOne p1 = (PlayerOne)tempObject;
                 if(getBoundsRight().intersects(p1.getRightAngleBounds()[0])){
-                    velocity = 5;
+                    velocity = 10;
                     setVelY(-1);
                 }
                 else if(getBoundsRight().intersects(p1.getRightAngleBounds()[1])){
-                   velocity = 5;
+                   velocity = 10;
                 }
                 else if(getBoundsRight().intersects(p1.getRightAngleBounds()[2])){
-                    velocity = 5;
+                    velocity = 10;
                     setVelY(1);
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwo){
                 PlayerTwo p2 = (PlayerTwo)tempObject;
                 if(getBoundsRight().intersects(p2.getLeftAngleBounds()[0])){
-                    velocity = -5;
+                    velocity = -10;
                     setVelY(-1);
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[1])){
-                    velocity = -5;
+                    velocity = -10;
                 }
                 else if(getBoundsRight().intersects(p2.getLeftAngleBounds()[2])){
-                    velocity = -5;
+                    velocity = -10;
                     setVelY(1);
                 }
 
