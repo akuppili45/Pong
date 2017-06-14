@@ -60,7 +60,7 @@ public class Game extends Canvas implements Runnable{
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                //System.out.println("FPS: " + frames + " TICKS: " + updates);
+                System.out.println("FPS: " + frames + " TICKS: " + updates);
                 frames = 0;
                 updates = 0;
             }
@@ -82,11 +82,15 @@ public class Game extends Canvas implements Runnable{
         //Draw Everything in here
         g.fillRect(0, 0, getWidth(), getHeight());//This NEEDS to be here. DON'T TAKE IT OUT OR THE PLAYER WON'T MOVE
         /////////////////////////////////
-        if (state == STATE.GAME)
+        if (state == STATE.GAME){
             handler.render(g);
+            g.drawString("hi",44,45);
+            //also render scores
+        }
         else if(state == STATE.MENU){
             menu.render(g);
         }
+
 
         g.dispose();
         bs.show();
