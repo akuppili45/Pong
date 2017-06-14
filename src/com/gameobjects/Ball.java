@@ -13,11 +13,11 @@ import com.company.Handler;
  */
 public class Ball extends GameObject {
 
-    int leftVelocity = -5;
-    int rightVelocity = 5;
-    int velocity = -5;
-    int initX = 384;
-    int initY = 288;
+    private int leftVelocity = -5;
+    private int rightVelocity = 5;
+    private int velocity = -5;
+    private int initX = 384;
+    private int initY = 288;
     Game game;
 
     public Ball(double x, double y, ObjectId id,Handler handler, Game game) {
