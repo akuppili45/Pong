@@ -30,7 +30,6 @@ public class Game extends Canvas implements Runnable{
         BufferedImage menu = loader.loadImage("/pongmainmenu.png");
         handler = new Handler();
         level = loader.loadImage("/ponglevel.png");
-        //Mouse input click on button 'Play', and then load the image level
         loadImageLevel(level);
 
         this.addKeyListener(new KeyInput(handler));
@@ -123,6 +122,9 @@ public class Game extends Canvas implements Runnable{
                 if (red == 182 && green == 255 && blue == 0){
                     handler.addObject(new Platform(xx *32, yy*32, ObjectId.Platform,handler));
                 }
+//                if(red == 76 && green == 255 && blue == 0){
+//                    handler.addObject(new ScoreLabel(xx*32,yy*32,ObjectId.ScoreLabel,handler));
+//                }
 
             }
         }

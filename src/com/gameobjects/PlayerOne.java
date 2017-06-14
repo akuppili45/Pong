@@ -13,6 +13,7 @@ import com.company.Handler;
 public class PlayerOne extends GameObject {
 
     int h = 27;
+    private ScoreLabel label = new ScoreLabel((int)getX(), (int)getY() - 200, ObjectId.ScoreLabel, getHandler());
     public PlayerOne(double x, double y, ObjectId id, Handler handler) {
         super(x, y, id, handler);
     }
@@ -28,8 +29,14 @@ public class PlayerOne extends GameObject {
         g.setColor(Color.BLUE);
         g.fillRect((int)getX(),(int)getY(), 25,80);
         Graphics2D g2D = (Graphics2D)g;
-        //g2D.draw(getBoundsLeft());
         g2D.setColor(Color.MAGENTA);
+        getHandler().addObject(label);
+
+
+
+
+
+        //g2D.draw(getBoundsLeft());
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY(), 2, h));
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + h, 2, h));
 //        g2D.draw(new Rectangle((int)getX() + 25, (int)getY() + 2*h, 2, h));
