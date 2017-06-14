@@ -3,6 +3,8 @@ package com.gameobjects;
 import com.company.GameObject;
 import com.company.ObjectId;
 import com.company.Handler;
+import com.company.ScoreLabel;
+
 import java.awt.*;
 import java.util.LinkedList;
 
@@ -11,7 +13,7 @@ import java.util.LinkedList;
  */
 public class PlayerTwo extends GameObject {
     int h = 27;
-    private ScoreLabel label = new ScoreLabel((int)getX() - 70, (int)getY() - 200, ObjectId.ScoreLabel, getHandler());
+
     public PlayerTwo(double x, double y, ObjectId id, Handler handler) {
         super(x, y, id, handler);
     }
@@ -30,7 +32,7 @@ public class PlayerTwo extends GameObject {
         g.fillRect((int)getX(),(int)getY(), 25,80);
         Graphics2D g2D = (Graphics2D)g;
         g2D.setColor(Color.BLUE);
-        getHandler().addObject(label);
+//        getHandler().addObject(label);
 //        g2D.draw(new Rectangle((int)getX(), (int)getY(), 2, h));
 //        g2D.draw(new Rectangle((int)getX(), (int)getY() + h, 2, h));
 //        g2D.draw(new Rectangle((int)getX(), (int)getY() + 2*h, 2, h));
