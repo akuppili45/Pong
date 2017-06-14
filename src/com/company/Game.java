@@ -9,6 +9,13 @@ public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = -6261436164361361187L;
     private boolean running = false;
     Handler handler;
+    private Menu menu = new Menu();
+    public static int WIDTH = 800;
+    public static int HEIGHT = 600;
+    public enum STATE{
+      MENU, GAME
+    };
+    private static STATE state = STATE.MENU;
     public synchronized void start() {
         if (running)
             return;
@@ -27,6 +34,7 @@ public class Game extends Canvas implements Runnable{
         loadImageLevel(level);
 
         this.addKeyListener(new KeyInput(handler));
+        this.addMouseListener(new MouseInput());
     }
     @Override
     public void run() {
@@ -60,7 +68,8 @@ public class Game extends Canvas implements Runnable{
         }
     }
     public void tick(){
-        handler.tick();
+        if(state == STATE.GAME)
+            handler.tick();
     }
     public void render(){
         BufferStrategy bs = this.getBufferStrategy();
@@ -74,7 +83,11 @@ public class Game extends Canvas implements Runnable{
         //Draw Everything in here
         g.fillRect(0, 0, getWidth(), getHeight());//This NEEDS to be here. DON'T TAKE IT OUT OR THE PLAYER WON'T MOVE
         /////////////////////////////////
-        handler.render(g);
+        if (state == STATE.GAME)
+            handler.render(g);
+        else if(state == STATE.MENU){
+            menu.render(g);
+        }
 
         g.dispose();
         bs.show();
@@ -115,9 +128,19 @@ public class Game extends Canvas implements Runnable{
         }
     }
 
+
+    public static void setState(STATE s) {
+        state = s;
+    }
+
+    public static STATE getState(){
+        return state;
+
+    }
+
     public static void main(String[] args) {
         new Window(800, 600, "Pong", new Game());
-//        new Window(800, 600, "Pong");
+
     }
 
 }
