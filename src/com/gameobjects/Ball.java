@@ -107,7 +107,7 @@ public class Ball extends GameObject {
                     game.label2.setScore(game.label2.getScore() + 1);
                     setX(initX);
                     setY(initY);
-                    velocity = -5;
+                    velocity = 5;
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwoPlatform){
