@@ -1,5 +1,6 @@
 package com.gameobjects;
 
+import com.company.Game;
 import com.company.GameObject;
 import com.company.ObjectId;
 
@@ -15,8 +16,13 @@ public class Ball extends GameObject {
     int leftVelocity = -5;
     int rightVelocity = 5;
     int velocity = -5;
-    public Ball(double x, double y, ObjectId id,Handler handler) {
+    int initX = 384;
+    int initY = 288;
+    Game game;
+
+    public Ball(double x, double y, ObjectId id,Handler handler, Game game) {
         super(x, y, id, handler);
+        this.game = game;
     }
 
 
@@ -98,12 +104,20 @@ public class Ball extends GameObject {
                 if(getBoundsLeft().intersects(tempObject.getBoundsRight())){
                     velocity = 0;
                     setVelY(0);
+                    game.label2.setScore(game.label2.getScore() + 1);
+                    setX(initX);
+                    setY(initY);
+                    velocity = -5;
                 }
             }
             if(tempObject.getId() == ObjectId.PlayerTwoPlatform){
                 if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
                     velocity = 0;
                     setVelY(0);
+                    game.label1.setScore(game.label1.getScore() + 1);
+                    setX(initX);
+                    setY(initY);
+                    velocity = -5;
                 }
             }
             if(tempObject.getId() == ObjectId.Platform){

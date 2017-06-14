@@ -12,6 +12,8 @@ public class Game extends Canvas implements Runnable{
     private Menu menu = new Menu();
     public static int WIDTH = 800;
     public static int HEIGHT = 600;
+    public ScoreLabel label1 = new ScoreLabel(44, 100);
+    public ScoreLabel label2 = new ScoreLabel(600,100);
     public enum STATE{
       MENU, GAME
     };
@@ -84,7 +86,10 @@ public class Game extends Canvas implements Runnable{
         /////////////////////////////////
         if (state == STATE.GAME){
             handler.render(g);
-            g.drawString("hi",44,45);
+
+            label1.render(g);
+            label2.render(g);
+            //g.drawString("hi",44,45);
             //also render scores
         }
         else if(state == STATE.MENU){
@@ -121,7 +126,7 @@ public class Game extends Canvas implements Runnable{
                     handler.addObject(new PlayerTwo(xx *32, yy*32, ObjectId.PlayerTwo,handler));
                 }
                 if (red == 255 && green == 97 && blue == 12) {
-                    handler.addObject(new Ball(xx *32, yy*32, ObjectId.Ball,handler));
+                    handler.addObject(new Ball(xx *32, yy*32, ObjectId.Ball,handler, this));
                 }
                 if (red == 182 && green == 255 && blue == 0){
                     handler.addObject(new Platform(xx *32, yy*32, ObjectId.Platform,handler));

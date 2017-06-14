@@ -14,7 +14,7 @@ import com.company.ScoreLabel;
 public class PlayerOne extends GameObject {
 
     int h = 27;
-    
+
     public PlayerOne(double x, double y, ObjectId id, Handler handler) {
         super(x, y, id, handler);
     }
